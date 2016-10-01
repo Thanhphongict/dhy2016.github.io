@@ -1,0 +1,28 @@
+{
+  "name": "lqd30",
+  "authors": [
+    "Ho Tuan Kiet <tuankiet65@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "GNU AGPLv3",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libraries",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.97.7",
+    "cropit": "^0.5.1",
+    "handlebars": "^4.0.5",
+    "font-awesome": "^4.6.3",
+    "jquery": "2",
+    "raven-js": "^3.7.0",
+    "downloadjs": "^1.4.6"
+  }
+}

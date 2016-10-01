@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+        <title>Thành đoàn 60 năm avatar</title>
+        <link rel="stylesheet" type="text/css" href="libraries/materialize/dist/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="libraries/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+    <body>
+        <header class="navbar-fixed">
+            <nav class="light-blue lighten-1" role="navigation">
+                <div class="navbar-wrapper container">
+                    <a href="/" class="brand-logo">Thành đoàn 60 năm avatar</a>
+                    <a href="#" data-activates="mobile-nav" class="button-collapse">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li class="active"><a href="/">Trang chủ</a></li>
+                        <li><a href="source">Kích cỡ to hơn</a></li>
+                        <li><a href="https://github.com/tuankiet65/lqd30/tree/thanh-doan-60">Mã nguồn</a></li>
+                        <li><a href="privacy_policy.html">Chính sách riêng tư</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-nav">
+                        <li class="active"><a href="/">Trang chủ</a></li>
+                        <li><a href="source">Kích cỡ to hơn</a></li>
+                        <li><a href="https://github.com/tuankiet65/lqd30/tree/thanh-doan-60">Mã nguồn</a></li>
+                        <li><a href="privacy_policy.html">Chính sách riêng tư</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main class="container">
+            <h1 class="center-align orange-text">Đổi avatar</h1>
+            <div class="row">
+                <div class="col l7">
+                    <div id="avatar-cropper">
+                        <div id="preview">
+                            <div id="direction-wrapper" class="valign-wrapper">
+                                <div class="valign center grey-text text-darken-1">
+                                    Hãy nhập avatar từ Facebook hoặc chọn avatar trong máy
+                                </div>
+                            </div>
+                            <img src="img/ava1.png" id="overlay"/>
+                            <div class="cropit-preview"></div>
+                        </div>
+                        <div class="cropit-controls">
+                            <i class="fa fa-picture-o"></i>
+                            <input type="range" class="cropit-image-zoom-input" style="width:30%" disabled="disabled"/>
+                            <i class="fa fa-picture-o fa-2x "></i>
+                            <button class="btn waves-effect waves-light btn-rotate" id="cropit-rotate-left">
+                            <i class="fa fa-rotate-left"></i>
+                            </button>
+                            <button class="btn waves-effect waves-light btn-rotate" id="cropit-rotate-right">
+                            <i class="fa fa-rotate-right"></i>
+                            </button>
+                        </div>
+                        <input type="file" class="cropit-image-input" />
+                    </div>
+                </div>
+                <div class="col l5" id="buttons-group">
+                    <div class="buttons-group-sep hide-on-large-only"></div>
+                    <button class="waves-effect waves-light btn modal-trigger" 
+                            id="ava-choose-overlay-trigger"
+                            href="#ava-choose-overlay-modal">
+                    <i class="fa fa-picture-o"></i> Chọn khung
+                    </button>
+                    <div class="separator">
+                        <i class="fa fa-long-arrow-right fa-rotate-90 fa-3x"></i>
+                    </div>
+                    <button class="btn btn-facebook tooltipped disabled"
+                    id="ava-load-facebook"
+                    data-position="top"
+                    data-delay="50"
+                    data-tooltip="Hãy chờ Facebook SDK load xong">
+                    <i class="fa fa-facebook-official"></i> Lấy avatar từ Facebook
+                    </button>
+                    <button class="waves-effect waves-light btn" id="ava-load-local">
+                    <i class="fa fa-picture-o"></i> Tự chọn hình trong máy
+                    </button>
+                    <div class="separator">
+                        <i class="fa fa-long-arrow-right fa-rotate-90 fa-3x"></i>
+                    </div>
+                    <button class="btn btn-facebook tooltipped disabled"
+                        id="ava-save-facebook-modal-trigger"
+                        data-position="top"
+                        data-delay="50"
+                        data-tooltip="Hãy chờ Facebook SDK load xong">
+                        <i class="fa fa-facebook-official"></i> Đăng avatar lên Facebook
+                    </button>
+                    <button class="btn waves-effect waves-light"
+                        id="ava-save-local">
+                        <i class="fa fa-download"></i> Lưu avatar về máy
+                    </button>
+                </div>
+            </div>
+        </main>
+        <div id="ava-save-facebook-modal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Đăng avatar lên Facebook</h4>
+                <p>Sau khi nhấn OK thì Facebook sẽ yêu cầu bạn cấp thêm quyền được truy cập vào ảnh của bạn.</p>
+                <p>Quyền này cho phép chương trình đăng avatar lên tài khoản của bạn và chương trình sẽ không bao giờ tải ảnh của bạn về.</p>
+                <p>Vì Facebook không cho phép đặt avatar tự động nên sau khi đăng avatar xong, chương trình sẽ tự động đổi hướng về avatar vừa tạo.
+                Việc của bạn sau đó là đặt ảnh đó làm avatar của bạn bằng cách đưa chuột vào vùng khung hình và nhấn nút "Đặt làm ảnh đại diện" hoặc "Make Profile Picture".</p>
+                <div class="center" id="ava-save-facebook-progress">
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <b id="status"></b>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Đóng</a>
+                <a href="#!" class="modal-action waves-effect waves-green btn-flat" id="ava-save-facebook">OK</a>
+            </div>
+        </div>
+        <div id="ava-choose-overlay-modal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Chọn khung</h4>
+                <div class="row center">
+                    <div class="col m6">
+                        <div class="card-panel white hoverable ava-choice" data-overlay-id="1">
+                            <img src="img/ava1.png" />
+                        </div>
+                        <div class="card-panel white hoverable ava-choice" data-overlay-id="3">
+                            <img src="img/ava3.png" />
+                        </div>
+                    </div>
+                    <div class="col m6">
+                        <div class="card-panel white hoverable ava-choice" data-overlay-id="2">
+                            <img src="img/ava2.png" />
+                        </div>
+                        <div class="card-panel white hoverable ava-choice" data-overlay-id="4">
+                            <img src="img/ava4.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Đóng</a>
+            </div>
+        </div>
+        <div id="fallback-save-modal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Lưu ảnh về máy</h4>
+                <p>Vì các thiết bị iOS không cho phép tải tập tin về máy, nên avatar kết quả của bạn được hiển thị ở dưới đây.</p>
+                <p>Việc của bạn là lưu avatar về máy bằng cách nhấn giữ avatar và chọn "Lưu hình ảnh" hoặc "Save Image"</p>
+                <img id="fallback-save-result" class="responsive-img">
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Đóng</a>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="footer-copyright">
+                <div class="container">
+                Trang web được thiết kế bởi Hồ Tuấn Kiệt.
+                </div>
+            </div>
+          </div>
+        </footer>
+        <script src="libraries/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="libraries/materialize/dist/js/materialize.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="libraries/cropit/dist/jquery.cropit.js" type="text/javascript" charset="utf-8"></script>
+        <script src="libraries/downloadjs/download.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="libraries/raven-js/dist/raven.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="index.js" type="text/javascript" charset="utf-8"></script>
+        <noscript>
+        <img src="//analytics-tuankiet65.rhcloud.com/piwik.php?idsite=4" style="border:0;" alt="" />
+        </noscript>
+    </body>
+</html>
